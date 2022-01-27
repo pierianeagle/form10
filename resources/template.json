@@ -1,0 +1,27 @@
+{
+    "input": {
+        "_comment": "additional functionality",
+        "_cik": "0000320193",
+        "_filing_entity": "APPLE INC.",
+        "_filing_date": "2021-10-29",
+
+        "ticker": "AAPL",
+        "date_from": "1997-05-10",
+        "date_to": "2022-01-27"
+    },
+    "output": {
+        "_comment1": "if date_from is not supplied, return all filings to date_to",
+        "_comment2": "if date_to is not supplied, return all filings after date_from",
+        "_comment3": "if neither is supplied, return filings from the entire date range",
+        "results": [
+            {
+                "filing_date": "2021-10-29",
+                "sentiment": "0.87"
+            },
+            {
+                "filing_date": "2020-10-30",
+                "sentiment": "0.74"
+            }
+        ]
+    }
+}
