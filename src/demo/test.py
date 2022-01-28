@@ -10,7 +10,7 @@ from train import Oracle
 
 
 # load the model 
-with open(r'../resources/models/superduper.pkl', 'rb') as f:
+with open(r'../../resources/models/superduper.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # load the data

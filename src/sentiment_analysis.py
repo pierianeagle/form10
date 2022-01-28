@@ -9,15 +9,14 @@ import pandas as pd
 # initialise the logger 
 logger = logging.getLogger(__name__)
 
-# # see line 68
-# load the model
+# # see line 67
+# load the default model
 with open(r'../resources/models/superduper.pkl', 'rb') as f:
-    model = pickle.load(f)
+    super_duper = pickle.load(f)
 
 # load the database
 # # maybe this should be in mongo with internal html fragments
-# with open('./resources/data/data.csv', 'r') as f:
-#     df = pd.read_csv(f, index_col=0)
+
 
 def build_json(n_results):
     """Build a skeleton json object to be filled.
@@ -70,7 +69,10 @@ def get_estimated_sentiment(req):
         # # predictions should be done beforehand since they would take ages
         # # in real life
         # # get the esimated sentiments from the database
-        res['results'][i]['sentiment']   = model.predict(results)[i]
+        # # if res['model']:
+        # #     res['results'][i]['sentiment'] = model.predict(results)[i]
+        # # else:
+        res['results'][i]['sentiment'] = super_duper.predict(results)[i]
 
     logger.info("Returning the json response.")
     return json.dumps(res)

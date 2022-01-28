@@ -7,9 +7,11 @@ RUN apt install -y python3-dev python3-pip
 
 RUN pip install -r requirements.txt
 
-COPY src/ /src/
+RUN python -m nltk.downloader popular -d ../resources/data/nltk_data
+
+COPY form10/ /form10/
 COPY resources/ /resources/
 
-WORKDIR /src
+WORKDIR /form10
 
 CMD ["python3", "rest.py"]

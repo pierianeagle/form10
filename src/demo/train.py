@@ -16,5 +16,5 @@ class Oracle(object):
 
 oracle = Oracle()
 
-with open(r'../resources/models/superduper.pkl', 'wb') as f:
+with open(r'../../resources/models/superduper.pkl', 'wb') as f:
     pickle.dump(oracle, f)
