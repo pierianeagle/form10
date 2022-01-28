@@ -3,8 +3,7 @@ import sys
 import json
 
 # hacky, don't like it
-# run util from within the folder
-sys.path.append('../')
+sys.path.append('./')
 from models.bag_of_words import bag_of_words
 
 

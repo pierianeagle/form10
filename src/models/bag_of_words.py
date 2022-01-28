@@ -1,5 +1,8 @@
+import sys
 import json
 
+# hacky, don't like it
+sys.path.append('./models')
 from preprocess import preprocess
 
 
