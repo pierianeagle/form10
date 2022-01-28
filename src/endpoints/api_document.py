@@ -1,7 +1,7 @@
 import logging
 import json
 
-from models.bag_of_words import preprocess, bag_of_words
+from models.bag_of_words import prep, bow
 
 
 # initialise the logger 
@@ -44,7 +44,7 @@ def get_estimated_sentiment(req):
     results = []
 
     # make the prediction on the fly
-    results.append(bag_of_words(preprocess(filing)))
+    results.append(bow(prep(filing)))
 
     # fill the json response
     logger.info("Filling the json response.")

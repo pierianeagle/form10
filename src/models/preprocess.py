@@ -30,8 +30,8 @@ def clean(filing):
 
     return sparkling
 
-
-def preprocess(filing):
+# # QUICK FIX!
+def prep(filing, words=words):
     """Pre-process the filing."""
     # remove html tags and special characters
     clean(filing)

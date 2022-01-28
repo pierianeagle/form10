@@ -4,12 +4,11 @@ import json
 
 # hacky, don't like it
 sys.path.append('./')
-from models.bag_of_words import bag_of_words
-
+from models.bag_of_words import bow
 
 # read the dictionary
 with open(r'../resources/data/loughran_mcdonald_lower.json', 'r') as f:
-    dictionary = json.loads(f)
+    dictionary = json.load(f)
 
 input_path  = r'../resources/data/filings'
 output_path = r'../resources/data/counts'
@@ -20,5 +19,5 @@ for file_name in os.listdir(input_path):
         filing = f.read()
 
     # write the counts
-    with open(os.path.hoin(output_path, file_name), 'w') as f:
-        json.dump(bag_of_words(file_name), f)
+    with open(os.path.join(output_path, file_name), 'w') as f:
+        json.dump(bow(filing), f)

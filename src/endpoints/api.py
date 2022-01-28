@@ -57,7 +57,7 @@ def get_estimated_sentiment(req):
     # # this could be imported from a database module
     # # use mongodb?
     # search the database for the relevant data
-    input_path = r'..resources/data/counts'
+    input_path = r'../resources/data/counts'
 
     # build and fill the result json
     logger.info("Building and filling the result json.")
@@ -75,7 +75,7 @@ def get_estimated_sentiment(req):
                         result = build_result_skele()
                         
                         result['filing_date'] = date_file.strftime('%Y-%m-%d')
-                        result['sentiment']   = json.loads(f)
+                        result['sentiment']   = json.load(f)
 
                         results.append(result)
 

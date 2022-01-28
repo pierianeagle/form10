@@ -3,17 +3,17 @@ import json
 
 # hacky, don't like it
 sys.path.append('./models')
-from preprocess import preprocess
+from preprocess import prep
 
 
 # read the dictionary
 with open(r'../resources/data/loughran_mcdonald_lower.json', 'r') as f:
-    dictionary = json.loads(f)
+    dictionary = json.load(f)
 
 
-def bag_of_words(filing):
+def bow(filing):
     """Return the Loughran McDonald sentiment counts."""
-    lemmatized = preprocess(filing)
+    lemmatized = prep(filing)
 
     # build the skeleton json
     counts = {
