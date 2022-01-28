@@ -1,3 +1,4 @@
+import sys
 import logging
 import json
 
@@ -29,9 +30,6 @@ def get_estimated_sentiment(req):
     Args:
         req: The posted json.
     """
-    logger.info("Checking the ticker.")
-    ticker = req['ticker']
-
     logger.info("Checking the filing.")
     filing = req['document']
 

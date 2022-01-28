@@ -3,6 +3,7 @@ import logging
 # # see line 13
 # # import pickle
 import json
+import re
 
 import datetime as dt
 
@@ -63,21 +64,23 @@ def get_estimated_sentiment(req):
     logger.info("Building and filling the result json.")
     results = []
 
-    # # the database should be updated as new filings come in
+    # # the database should be check for new filings regularly
     # since predictions can be done beforehand, let's do that
     # they could take ages in real life
     for file_name in os.listdir(input_path):
-        date_file = dt.datetime.strptime(file_name[-15:-5], '%Y-%m-%d')
+        file_info = re.split('_|\.', file_name)
+        file_date = dt.datetime.strptime(file_info[2], '%Y-%m-%d')
 
-        if date_file > date_from:
-            if date_file < date_to:
-                    with open(os.path.join(input_path, file_name), 'r') as f:
-                        result = build_result_skele()
-                        
-                        result['filing_date'] = date_file.strftime('%Y-%m-%d')
-                        result['sentiment']   = json.load(f)
+        if file_info[0] == ticker:
+            if file_date > date_from:
+                if file_date < date_to:
+                        with open(os.path.join(input_path, file_name), 'r') as f:
+                            result = build_result_skele()
 
-                        results.append(result)
+                            result['filing_date'] = file_date.strftime('%Y-%m-%d')
+                            result['sentiment']   = json.load(f)
+
+                            results.append(result)
 
     # fill the json response
     logger.info("Filling the json response.")

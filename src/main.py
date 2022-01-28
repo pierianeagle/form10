@@ -36,7 +36,7 @@ def route_43():
 @app.route('/api/document', methods=['POST'])
 def route_66():
     logger.info("Access to api/document endpoint.")
-
+    
     data = request.get_json()
     res = api_document.get_estimated_sentiment(data)
 

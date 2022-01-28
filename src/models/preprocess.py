@@ -33,8 +33,6 @@ def clean(filing):
 # # QUICK FIX!
 def prep(filing, words=words):
     """Pre-process the filing."""
-    # remove html tags and special characters
-    clean(filing)
     # tokenize the string
     tokenized = word_tokenize(filing)
 
