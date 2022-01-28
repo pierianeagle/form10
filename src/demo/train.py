@@ -12,10 +12,11 @@ class Oracle(object):
         Args:
             x: Useless
         """
-        return np.random.uniform(size=len(x))
+        predictions = [':D', 'D:']
+        return np.random.choice(predictions)
 
 
 oracle = Oracle()
 
-with open(r"../../resources/models/superduper.pkl", "wb") as f:
+with open(r"../resources/models/superduper.pkl", "wb") as f:
     pickle.dump(oracle, f)

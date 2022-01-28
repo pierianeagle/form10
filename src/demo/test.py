@@ -1,3 +1,4 @@
+import sys
 import pickle
 
 import pandas as pd
@@ -6,7 +7,9 @@ from sklearn.metrics import mean_squared_error
 
 # you need to import the class template, otherwise python won't know how to
 # recreate the object from the serialization
-from train import Oracle
+# hacky, don't like it
+sys.path.append("./demo")
+from demo.train import Oracle
 
 
 # load the model

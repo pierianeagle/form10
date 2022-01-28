@@ -3,7 +3,7 @@ import logging
 from flask import Flask, request
 from waitress import serve
 
-from endpoints import api, api_document
+from endpoints import api, api_document, api_predict
 
 
 logging.basicConfig(
@@ -19,7 +19,7 @@ app = Flask(__name__)
 def home():
     logger.info("Access to landing page")
 
-    return "Hi, I'm a landing page." # "Suck on my big fat landing page."
+    return "Hi, I'm a landing page."
 
 
 @app.route("/api", methods=["POST"])
@@ -38,6 +38,16 @@ def route_66():
 
     data = request.get_json()
     res = api_document.get_estimated_sentiment(data)
+
+    return res
+
+
+@app.route("/api/predict", methods=["POST"])
+def route_12():
+    logger.info("Access to api/predict endpoint.")
+
+    data = request.get_json()
+    res = api_predict.get_prediction(data)
 
     return res
 

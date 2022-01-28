@@ -1,17 +1,19 @@
 FROM ubuntu
 
 RUN apt update && \
-    apt upgrade
+    apt upgrade -y
 
 RUN apt install -y python3-dev python3-pip
 
-RUN pip install -r requirements.txt
+# # fix me!
+# RUN pip install -r requirements.txt
+RUN pip install beautifulsoup4 nltk scikit-learn flask waitress
 
-RUN python -m nltk.downloader popular -d ../resources/data/nltk_data
+RUN python3 -m nltk.downloader popular -d ../resources/data/nltk_data
 
-COPY form10/ /form10/
+COPY src/ /src/
 COPY resources/ /resources/
 
-WORKDIR /form10
+WORKDIR /src
 
 CMD ["python3", "main.py"]
