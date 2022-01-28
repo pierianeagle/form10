@@ -16,11 +16,12 @@ with open(r"../resources/data/loughran_mcdonald_lower.json", "r") as f:
 input_path = r"../resources/data/filings"
 output_path = r"../resources/data/counts"
 
-for file_name in os.listdir(input_path):
+for input_name in os.listdir(input_path):
     # read the filing
-    with open(os.path.join(input_path, file_name), "r") as f:
+    with open(os.path.join(input_path, input_name), "r") as f:
         filing = f.read()
 
     # write the counts
-    with open(os.path.join(output_path, file_name), "w") as f:
+    output_name = input_name[:-5] + r'.json'
+    with open(os.path.join(output_path, output_name), "w") as f:
         json.dump(bow(prep(clean(filing))), f)

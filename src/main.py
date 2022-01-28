@@ -19,7 +19,7 @@ app = Flask(__name__)
 def home():
     logger.info("Access to landing page")
 
-    return "Suck on my big fat landing page."
+    return "Hi, I'm a landing page." # "Suck on my big fat landing page."
 
 
 @app.route("/api", methods=["POST"])
