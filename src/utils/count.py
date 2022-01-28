@@ -1,9 +1,12 @@
-from itertools import count
 import os
+import sys
 import json
 
-# # not working!
+# hacky, don't like it
+# run util from within the folder
+sys.path.append('../')
 from models.bag_of_words import bag_of_words
+
 
 # read the dictionary
 with open(r'../resources/data/loughran_mcdonald_lower.json', 'r') as f:

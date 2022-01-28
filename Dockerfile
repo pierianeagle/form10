@@ -14,4 +14,4 @@ COPY resources/ /resources/
 
 WORKDIR /form10
 
-CMD ["python3", "rest.py"]
+CMD ["python3", "main.py"]

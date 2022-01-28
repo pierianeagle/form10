@@ -1,11 +1,11 @@
 import json
 
-from utils.preprocess import preprocess
+from preprocess import preprocess
 
 
 # read the dictionary
 with open(r'../resources/data/loughran_mcdonald_lower.json', 'r') as f:
-    dictionary = json.loads()
+    dictionary = json.loads(f)
 
 
 def bag_of_words(filing):

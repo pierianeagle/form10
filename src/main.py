@@ -3,7 +3,7 @@ import logging
 from flask import Flask, request
 from waitress import serve
 
-import sentiment_analysis as sa
+from endpoints import api, api_document
 
 
 logging.basicConfig(
@@ -24,13 +24,23 @@ def home():
 
 
 @app.route('/api', methods=['POST'])
-def do_sentiment_analysis():
+def route_43():
     logger.info("Access to api endpoint.")
 
     data = request.get_json()
-    response = sa.get_estimated_sentiment(data)
+    res = api.get_estimated_sentiment(data)
 
-    return response
+    return res
+
+
+@app.route('/api/document', methods=['POST'])
+def route_66():
+    logger.info("Access to api/document endpoint.")
+
+    data = request.get_json()
+    res = api_document.get_estimated_sentiment(data)
+
+    return res
 
 
 serve(app, port=50055, host='0.0.0.0')
